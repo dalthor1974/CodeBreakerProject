@@ -9,7 +9,7 @@ function guess() {
     } else {
       attempt.value++;
     }
-    if (getResult(input.value)) {
+    if (getResults(input.value)) {
       setMessage('You Win! :)');
     } else if (attempt.value >= 10) {
       setMessage('You Lose! :(');
@@ -40,7 +40,7 @@ function validateInput(number) {
   }
 }
 
-function getResult(number) {
+function getResults(number) {
   let code = '', test = number.split(''), correct = answer.value.split(''), count = 0;
   for (let i = 0; i < 4; i++) {
     if (test[i] == correct[i]) {
