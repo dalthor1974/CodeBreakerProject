@@ -11,8 +11,12 @@ function guess() {
     }
     if (getResults(input.value)) {
       setMessage('You Win! :)');
+      showAnswer(true);
+      showReplay();
     } else if (attempt.value >= 10) {
       setMessage('You Lose! :(');
+      showAnswer(false);
+      showReplay();
     } else {
       setMessage('Incorrect, try again.');
     }
@@ -59,4 +63,19 @@ function getResults(number) {
   let results = document.getElementById('results');
   results.innerHTML += '<div class="row"><span class="col-md-6">' + number + '</span><div class="col-md-6">' + code + '</div></div>';
   return count == 4;
+}
+
+function showAnswer(succeeded) {
+  let solution = document.getElementById('code');
+  solution.innerHTML = answer.value;
+  if (succeeded) {
+    solution.classList.add('success');
+  } else {
+    solution.classList.add('failure');
+  }
+}
+
+function showReplay() {
+  document.getElementById('guessing-div').style.display = 'none';
+  document.getElementById('replay-div').style.display = 'block';
 }
